@@ -1,0 +1,77 @@
+
+.circulo-stock{
+    background-color: white;
+    position: absolute;
+    width: 30px;
+    height: 30px; 
+    border-radius: 100%;
+    top:5px;
+    right: 5px;
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+}
+
+.circulo-stock:hover{
+    background-color: lightpink;
+    
+}
+.item-cant{
+    color: black;
+
+}
+.card-b-margin{
+    padding: 10px !important;
+    /* background-color: blue;  */
+}
+.detail-product{
+ /* display: flex;
+ justify-content: flex-start; */
+ display: grid;
+ grid-template-columns: repeat(3,1fr);
+ grid-template-columns: 20% 40% 40%;
+ grid-template-rows: 40% 60%;
+ justify-items: flex-start;
+}
+.detail-product h4{
+    /* display: inline-block; */
+    
+    /* background-color: red; */
+    margin: 0;
+    grid-column: 1/2;
+    padding: 0;
+
+}
+.detail-product p{
+    /* background-color: yellow; */
+    margin: 0;
+    padding-top: 5px;
+    grid-column: 2/4;
+    align-self:center ;
+
+}
+
+.detail-product h5{
+    /* display: inline-block; */
+    /* background-color: green; */
+    grid-column: 1/4;
+    margin-top: 5px;
+    /* justify-self: center; */
+
+}
+/* .card-body{
+    background-color: lightslategray;
+} */
+
+
+
+.seleccion:hover{
+ /* background-color: lightblue; */
+ box-shadow: 5px 5px 20px rgb(0,0,0,0.3);
+ transform: translateY(-3%);
+ transition: all 400ms ease;
+ /* ('.card-f-ocultar'){visibility: none;} */
+}
+/* .card-f-ocultar{
+    visibility: hidden;
+} */

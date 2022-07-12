@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -12,6 +13,10 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <!-- estylos agregados -->
+        <link rel="stylesheet" href="css/stylesAgregados.css">
+        <!-- iconos -->
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     </head>
     <body>
         <!-- Navigation-->
@@ -54,28 +59,41 @@
         </header>
         <!-- Section-->
         <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
+            <div class="container px-4 px-lg-5 mt-5 ">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     
                     <div class="col mb-5">
-                        <div class="card h-100">
-                            <div id="ItemCant" class="item-cant">99</div>
+                        <!-- agregado de la clase seleccion -->
+                        <div class="card h-100 seleccion">
+                            <!-- agregando la bolita de stock -->
+                            <div class="circulo-stock">
+                                <div id="ItemCant" class="item-cant">99</div>
+                            </div>
+                            <!-- ---------- -->
                             <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <img class="card-img-top" src=".\assets\laptop.jpg" alt="..." />
                            
 
                             <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
+                            <!-- agregado de la clase margin -->
+                            <div class="card-body p-4 card-b-margin">
+                                <!-- agregado clase detalle-producto -->
+                                <div class="text-center detail-product ">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Fancy Product</h5>
+                                    <h4>10$</h4>
+                                    <p>- stock: 99</p>
+                                    <h5 class="fw-bolder">Name Product</h5>
                                     <!-- Product price-->
-                                    $40.00 - $80.00
+                                   
                                 </div>
                             </div>
                             <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                            <!-- agregado de la clase card-f-ocultar -->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent card-f-ocultar">
+                                <div class="text-center">
+                                    <a class="btn btn-outline-dark mt-auto" href="#"><i class='bx bxs-cart-add' ></i> add</a>
+                                    <!-- <a href=""></a> -->
+                                </div>
                             </div>
                         </div>
                     </div>
