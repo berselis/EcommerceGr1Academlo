@@ -1,0 +1,51 @@
+[
+    {
+        "Id":"1",
+        "Name":"laptop",
+        "Price": 500,
+        "ImgRoot": "",
+        "Stock": 10
+    },
+    {
+        "Id":"2",
+        "Name":"Mouse",
+        "Price": 200,
+        "ImgRoot": "",
+        "Stock": 10
+    },
+    {
+        "Id":"3",
+        "Name":"Teclado",
+        "Price": 500,
+        "ImgRoot": "",
+        "Stock": 10
+    },
+    {
+        "Id":"4",
+        "Name":"Board",
+        "Price": 300,
+        "ImgRoot": "",
+        "Stock": 10
+    },
+    {
+        "Id":"5",
+        "Name":"Monitor",
+        "Price": 250,
+        "ImgRoot": "",
+        "Stock": 10
+    },
+    {
+        "Id":"6",
+        "Name":"Disco SSD",
+        "Price": 500,
+        "ImgRoot": "",
+        "Stock": 10
+    },
+    {
+        "Id":"7",
+        "Name":"Memory DDR5",
+        "Price": 700,
+        "ImgRoot": "",
+        "Stock": 10
+    }
+]
