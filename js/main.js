@@ -1,67 +1,18 @@
-const articulos = [
-    {
-        "Id":"1",
-        "Name":"laptop Lenovo",
-        "Price": 500,
-        "ImgRoot": "https://es.digitaltrends.com/wp-content/uploads/2022/06/surface-laptop-go-2-feat.jpg?resize=625%2C417&p=1",
-        "Stock": 10
-    },
-    {
-        "Id":"2",
-        "Name":"Mouse Corsair",
-        "Price": 200,
-        "ImgRoot": "https://thermaltake.azureedge.net/pub/media/catalog/product/cache/6bf0ed99c663954fafc930039201ed07/l/2/l20m01.jpg",
-        "Stock": 10
-    },
-    {
-        "Id":"3",
-        "Name":"Teclado HP",
-        "Price": 500,
-        "ImgRoot": "https://m.media-amazon.com/images/I/81CxvebthLS._AC_SX355_.jpg",
-        "Stock": 10
-    },
-    {
-        "Id":"4",
-        "Name":"Motherboard Azus",
-        "Price": 300,
-        "ImgRoot": "https://m.media-amazon.com/images/I/61mngTZGfiL._AC_SY355_.jpg",
-        "Stock": 10
-    },
-    {
-        "Id":"5",
-        "Name":"Monitor Sangsum",
-        "Price": 250,
-        "ImgRoot": "https://m.media-amazon.com/images/I/61SQz8S+fEL._AC_SY355_.jpg",
-        "Stock": 10
-    },
-    {
-        "Id":"6",
-        "Name":"Disco SSD",
-        "Price": 500,
-        "ImgRoot": "https://m.media-amazon.com/images/I/61Sm1xzjG7L._AC_SY355_.jpg",
-        "Stock": 10
-    },
-    {
-        "Id":"7",
-        "Name":"Memory DDR5",
-        "Price": 700,
-        "ImgRoot": "https://m.media-amazon.com/images/I/61UwHpj3J4L._AC_SX355_PIbundle-2,TopRight,0,0_SH20_.jpg",
-        "Stock": 10
-    }
-]
+import json from "./items.json" assert {type:"json"};
+
+let DB = json;
+
 const loyoutItems = document.getElementById('LoyoutItems');
 const listaCarrito = document.getElementById('items');
 
 
 
 document.addEventListener('DOMContentLoaded', ()=>{
-
     FillLayoutWidthItems();
-
 });
 
 function AdditemToCar(ID){
-    let item = articulos.find(item =>{
+    let item = DB.find(item =>{
         if(item.Id === ID) return item;
     });
 
@@ -127,7 +78,7 @@ function FillLayoutWidthItems(){
 
     loyoutItems.innerHTML = '';
 
-    articulos.forEach(item => {
+    DB.forEach(item => {
 
         const col = document.createElement('div');
         col.className = 'col mb-5';
@@ -199,11 +150,6 @@ function FillLayoutWidthItems(){
         
         });
         
-
-
-
-
-
 }
 
 
