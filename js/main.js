@@ -106,6 +106,11 @@ function AdditemToCar(ID){
     tr.appendChild(total);
 
     listaCarrito.appendChild(tr);
+
+
+
+    DiscountItemFromStock(item.Id);
+
 }
 
 function AddItems(Id){
@@ -198,6 +203,15 @@ function FillLayoutWidthItems(){
 
 
 
+
+}
+
+
+function DiscountItemFromStock(Id){
+
+    const items = [...loyoutItems.children];
+
+    console.log(items);
 
 }
 
