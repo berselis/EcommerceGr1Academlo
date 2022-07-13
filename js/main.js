@@ -1,6 +1,7 @@
 import json from "./items.json" assert {type: "json"};
 
 let DB = json;
+let TOTAL = 0;
 
 const loyoutItems = document.getElementById('LoyoutItems');
 const listaCarrito = document.getElementById('items');
@@ -15,18 +16,29 @@ function AddItemToCar(buttom) {
     let item = DB.find(item => {
         if (item.Id === buttom.id) return item;
     });
-
     let count = listaCarrito.childElementCount;
+    const card = buttom.parentElement.parentElement.parentElement;
+
+    if(item.Stock > 0){
 
 
-    console.log(item);
-
-    
-
-    buttom.disabled = true;
 
 
-    function AddToCar() {
+
+        AddToCar(); 
+
+    }    
+
+
+
+
+
+
+
+
+
+
+    function AddToCar(){
         const tr = document.createElement('tr');
         tr.id = item.Id;
 
@@ -67,15 +79,20 @@ function AddItemToCar(buttom) {
 
         listaCarrito.appendChild(tr);
 
+        ReduceItemFromStock(item, card);
     }
-
-
 
 
 
 }
 
-function ReduceItemFromStock(item){
+function ReduceItemFromStock(item, card){
+
+    item.Stock--;
+    card.children[0].firstElementChild.innerText = item.Stock;
+    card.children[2].firstElementChild.children[1].innerText = `- stock ${item.Stock}`;
+    
+    
 
 }
 
@@ -123,7 +140,7 @@ function FillLayoutWidthItems() {
         const divCardBody = document.createElement('div');
         divCardBody.className = 'card-body p-4 card-b-margin';
         const divText = document.createElement('div');
-        divText.className = 'text-center detail-product';
+        divText.className = 'text-center';
 
         //Precio del item
         const h4 = document.createElement('h4');
