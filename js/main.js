@@ -1,15 +1,40 @@
 import json from "./items.json" assert {type: "json"};
 
+//Variable Bade de Datos que contiene el arreglo proveniente del JSON
 let DB = json;
+
+//Variable para el total de las facturas
 let TOTAL = 0;
 
+//Constantes de elementos del HTML
 const loyoutItems = document.getElementById('LoyoutItems');
 const listaCarrito = document.getElementById('items');
+const msjEmptyCart = document.getElementById('footer-carrito');
+const cartCant = document.getElementById('CartCant');
+const totalCart = document.getElementById('TotalCart');
+const btnEmptyCart = document.getElementById('vaciar-carrito');
+const btnPaid = document.getElementById('BtnPaid');
+const btnModal = document.getElementById('BtnModal');
+const btnPaidFactura = document.getElementById('BtnModalPaidFactura');
+const modalBodyDetail = document.getElementById('ModalBodyDetail');
+const modalTotal = document.getElementById('ModalTotal');
 
 
-
+//Evento se ejecuta al cargar el docuemento
 document.addEventListener('DOMContentLoaded', () => {
     FillLayoutWidthItems();
+});
+
+btnEmptyCart.addEventListener('click', ()=>{
+    ClearAll();
+});
+
+btnPaid.addEventListener('click', ()=>{
+    PaidCart();
+});
+
+btnPaidFactura.addEventListener('click', ()=>{
+    PaidFactura();
 });
 
 function AddItemToCar(buttom) {
@@ -19,26 +44,25 @@ function AddItemToCar(buttom) {
     let count = listaCarrito.childElementCount;
     const card = buttom.parentElement.parentElement.parentElement;
 
+    msjEmptyCart.classList.add('hide');
+
     if(item.Stock > 0){
 
+        let rowCar = [...listaCarrito.children].filter(tr => tr.id == item.Id);
+        if(rowCar.length > 0){
+            AddSameItemToCar(rowCar);
 
+        }else{
+            AddNewItemToCar(); 
+        }
 
-
-
-        AddToCar(); 
+        ReduceItemFromStock(item, card);
+        SumTotalItems();
 
     }    
 
 
-
-
-
-
-
-
-
-
-    function AddToCar(){
+    function AddNewItemToCar(){
         const tr = document.createElement('tr');
         tr.id = item.Id;
 
@@ -59,8 +83,9 @@ function AddItemToCar(buttom) {
         const plus = document.createElement('button');
         plus.className = 'btn btn-info btn-sm';
         plus.innerText = '+';
+        plus.id = item.Id;
         plus.addEventListener('click', (e) => {
-            AddItems(item.Id);
+            AddItem(tr);
         });
         buttons.appendChild(plus);
 
@@ -68,10 +93,14 @@ function AddItemToCar(buttom) {
         minus.className = 'btn btn-danger btn-sm';
         minus.innerText = '-';
         minus.addEventListener('click', (e) => {
-            RemoveItem(item.Id);
+            RemoveItem(tr);
         });
         buttons.appendChild(minus);
         tr.appendChild(buttons);
+
+        const price = document.createElement('td');
+        price.innerText = item.Price;
+        tr.appendChild(price);
 
         const total = document.createElement('td');
         total.innerText = item.Price;
@@ -79,30 +108,32 @@ function AddItemToCar(buttom) {
 
         listaCarrito.appendChild(tr);
 
-        ReduceItemFromStock(item, card);
+        
     }
 
+    function AddSameItemToCar(tr){
+        let cant = parseInt(tr[0].children[2].innerText) + 1;
+        let price = parseFloat(tr[0].children[4].innerText);
 
+        tr[0].children[2].innerText = cant;
+        tr[0].children[5].innerText = price * cant;
+    }
 
 }
 
 function ReduceItemFromStock(item, card){
-
     item.Stock--;
     card.children[0].firstElementChild.innerText = item.Stock;
     card.children[2].firstElementChild.children[1].innerText = `- stock ${item.Stock}`;
-    
-    
-
 }
 
-function AddItems(Id) {
-    console.log(Id);
+
+function AddItem(tr){
+    console.log(tr);
 
 }
-
-function RemoveItem(Id) {
-    console.log(Id);
+function RemoveItem(tr) {
+    console.log(tr);
 }
 
 
@@ -185,15 +216,73 @@ function FillLayoutWidthItems() {
 
 }
 
+function SumTotalItems(){
+    let cant = 0;
+    TOTAL = 0;
 
-function DiscountItemFromStock(item) {
+    [...listaCarrito.children].map(item =>{
+        cant += parseInt(item.children[2].innerText);
+        TOTAL += parseFloat(item.children[5].innerText);
+    });
 
-
-
-
-
+    cartCant.innerText = cant;
+    totalCart.innerText = TOTAL;
 }
 
 
+function ClearAll(){
+    cartCant.innerText = 0;
+    totalCart.innerText = '0.00';
+    msjEmptyCart.classList.remove('hide');
+    [...listaCarrito.children].forEach(row =>{
+        let item = DB.find(item => item.Id == row.id)
+        item.Stock += parseInt(row.children[2].innerText);
 
+    });
+    listaCarrito.innerHTML = '';
+    FillLayoutWidthItems();
+}
+
+function PaidCart(){
+    let count = listaCarrito.childElementCount;
+    if(count > 0){
+        modalBodyDetail.innerHTML = '';
+
+        [...listaCarrito.children].forEach(row =>{
+            console.log(row);
+            const tr = document.createElement('tr');
+
+            const item = document.createElement('td'); 
+            item.innerText = row.children[1].innerText;
+            tr.appendChild(item);
+
+            const qty = document.createElement('td');
+            qty.innerText = row.children[2].innerText;
+            tr.appendChild(qty);
+
+            const price = document.createElement('td');
+            price.innerText = row.children[4].innerText;
+            tr.appendChild(price);
+
+            const subtotal = document.createElement('td');
+            subtotal.innerText = row.children[5].innerText;
+            tr.appendChild(subtotal);
+
+            modalBodyDetail.appendChild(tr);
+        });
+
+        modalTotal.innerText = totalCart.innerText;
+
+        btnModal.click();
+    }
+
+}
+
+function PaidFactura(){
+    cartCant.innerText = 0;
+    modalBodyDetail.innerHTML = listaCarrito.innerHTML = '';
+    modalTotal.innerText = totalCart.innerText = '0.00';
+    msjEmptyCart.classList.remove('hide');
+    
+}
 

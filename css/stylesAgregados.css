@@ -186,3 +186,17 @@ b, strong {
 .text-img figure img {
     width: 50%;
 }
+
+
+#template-footer{
+    margin: 2vw 8vw;
+}
+
+.empty-cart{
+    text-align: center;
+    color:#c55a5a;
+}
+
+.hide{
+    display: none;
+}
