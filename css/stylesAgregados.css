@@ -200,3 +200,87 @@ b, strong {
 .hide{
     display: none;
 }
+
+.footer {
+    border-top: #000 solid 1px;
+    font-family: Poppins;
+    background: #fff;
+    padding-top: 50px;
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.cont {
+    text-align: left;
+}
+.cont h3 {
+    color: #0c0c0e;
+    font-size: 37px;
+    line-height: 55px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 18px;
+    font-size: bold;
+}
+h1, h2, h3 {
+    font-family: 'Baloo Chettan',cursive;
+}
+h1, h2, h3, h4, h5, h6 {
+    letter-spacing: 0;
+    font-weight: normal;
+    position: relative;
+    padding: 0 0 10px 0;
+    font-weight: normal;
+    line-height: normal;
+    color: #111;
+    margin: 0;
+}
+.multi {
+    color: #2bcc91;
+    font-weight: bold;
+    font-size: 40px;
+}
+@media (min-width: 768px) { 
+.col-md-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+}
+.copyright {
+    margin-top: 43px;
+    padding: 20px 0;
+    background-color: #23262d;
+}
+@media (min-width: 768px) { 
+.col-md-12 {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+}
+.copyright p {
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+}
+p {
+    margin: 0;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 24px;
+}
