@@ -131,8 +131,27 @@ function ReduceItemFromStock(item, card){
 
 
 function AddItem(tr){
-    console.log(tr);
-    //logica de t
+
+    const item = DB.find(item =>{
+        if(item.Id == tr.id) return item;
+    });
+
+    if(item.Stock > 0){
+        item.Stock--;
+        let qyt = parseInt(tr.children[2].innerText) + 1;
+        tr.children[2].innerText = qyt;
+
+        
+
+
+
+
+        FillLayoutWidthItems();
+    }
+
+    
+
+    console.log();
 
 }
 function RemoveItem(tr) {
