@@ -14,6 +14,8 @@ const cartCant = document.getElementById('CartCant');
 const totalCart = document.getElementById('TotalCart');
 const btnEmptyCart = document.getElementById('vaciar-carrito');
 const btnPaid = document.getElementById('BtnPaid');
+
+//Elementos del modal
 const btnModal = document.getElementById('BtnModal');
 const btnPaidFactura = document.getElementById('BtnModalPaidFactura');
 const modalBodyDetail = document.getElementById('ModalBodyDetail');
@@ -130,6 +132,7 @@ function ReduceItemFromStock(item, card){
 
 function AddItem(tr){
     console.log(tr);
+    //logica de t
 
 }
 function RemoveItem(tr) {
@@ -237,7 +240,6 @@ function ClearAll(){
     [...listaCarrito.children].forEach(row =>{
         let item = DB.find(item => item.Id == row.id)
         item.Stock += parseInt(row.children[2].innerText);
-
     });
     listaCarrito.innerHTML = '';
     FillLayoutWidthItems();
