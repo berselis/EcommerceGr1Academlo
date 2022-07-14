@@ -27,15 +27,15 @@ document.addEventListener('DOMContentLoaded', () => {
     FillLayoutWidthItems();
 });
 
-btnEmptyCart.addEventListener('click', ()=>{
+btnEmptyCart.addEventListener('click', () => {
     ClearAll();
 });
 
-btnPaid.addEventListener('click', ()=>{
+btnPaid.addEventListener('click', () => {
     PaidCart();
 });
 
-btnPaidFactura.addEventListener('click', ()=>{
+btnPaidFactura.addEventListener('click', () => {
     PaidFactura();
 });
 
@@ -48,23 +48,23 @@ function AddItemToCar(buttom) {
 
     msjEmptyCart.classList.add('hide');
 
-    if(item.Stock > 0){
+    if (item.Stock > 0) {
 
         let rowCar = [...listaCarrito.children].filter(tr => tr.id == item.Id);
-        if(rowCar.length > 0){
+        if (rowCar.length > 0) {
             AddSameItemToCar(rowCar);
 
-        }else{
-            AddNewItemToCar(); 
+        } else {
+            AddNewItemToCar();
         }
 
         ReduceItemFromStock(item, card);
         SumTotalItems();
 
-    }    
+    }
 
 
-    function AddNewItemToCar(){
+    function AddNewItemToCar() {
         const tr = document.createElement('tr');
         tr.id = item.Id;
 
@@ -110,10 +110,10 @@ function AddItemToCar(buttom) {
 
         listaCarrito.appendChild(tr);
 
-        
+
     }
 
-    function AddSameItemToCar(tr){
+    function AddSameItemToCar(tr) {
         let cant = parseInt(tr[0].children[2].innerText) + 1;
         let price = parseFloat(tr[0].children[4].innerText);
 
@@ -123,39 +123,46 @@ function AddItemToCar(buttom) {
 
 }
 
-function ReduceItemFromStock(item, card){
+function ReduceItemFromStock(item, card) {
     item.Stock--;
     card.children[0].firstElementChild.innerText = item.Stock;
     card.children[2].firstElementChild.children[1].innerText = `- stock ${item.Stock}`;
 }
 
 
-function AddItem(tr){
-
-    const item = DB.find(item =>{
-        if(item.Id == tr.id) return item;
+function AddItem(tr) {
+    const item = DB.find(item => {
+        if (item.Id == tr.id) return item;
     });
 
-    if(item.Stock > 0){
+    if (item.Stock > 0) {
         item.Stock--;
-        let qyt = parseInt(tr.children[2].innerText) + 1;
-        tr.children[2].innerText = qyt;
-
-        
-
-
-
-
+        let qty = parseInt(tr.children[2].innerText) + 1;
+        tr.children[2].innerText = qty;
+        tr.children[5].innerText = qty * item.Price;
+        SumTotalItems();
         FillLayoutWidthItems();
     }
-
-    
-
-    console.log();
-
 }
 function RemoveItem(tr) {
-    console.log(tr);
+    const item = DB.find(item => {
+        if (item.Id == tr.id) return item;
+    });
+
+    item.Stock++;
+
+    let qty = parseInt(tr.children[2].innerText) - 1;
+    tr.children[2].innerText = qty;
+    tr.children[5].innerText = qty * item.Price;
+    SumTotalItems();
+    FillLayoutWidthItems();
+
+    if (qty == 0) {
+        tr.remove();
+        if (listaCarrito.childElementCount == 0) msjEmptyCart.classList.remove('hide');
+    }
+
+
 }
 
 
@@ -238,11 +245,11 @@ function FillLayoutWidthItems() {
 
 }
 
-function SumTotalItems(){
+function SumTotalItems() {
     let cant = 0;
     TOTAL = 0;
 
-    [...listaCarrito.children].map(item =>{
+    [...listaCarrito.children].map(item => {
         cant += parseInt(item.children[2].innerText);
         TOTAL += parseFloat(item.children[5].innerText);
     });
@@ -252,11 +259,11 @@ function SumTotalItems(){
 }
 
 
-function ClearAll(){
+function ClearAll() {
     cartCant.innerText = 0;
     totalCart.innerText = '0.00';
     msjEmptyCart.classList.remove('hide');
-    [...listaCarrito.children].forEach(row =>{
+    [...listaCarrito.children].forEach(row => {
         let item = DB.find(item => item.Id == row.id)
         item.Stock += parseInt(row.children[2].innerText);
     });
@@ -264,16 +271,16 @@ function ClearAll(){
     FillLayoutWidthItems();
 }
 
-function PaidCart(){
+function PaidCart() {
     let count = listaCarrito.childElementCount;
-    if(count > 0){
+    if (count > 0) {
         modalBodyDetail.innerHTML = '';
 
-        [...listaCarrito.children].forEach(row =>{
+        [...listaCarrito.children].forEach(row => {
             console.log(row);
             const tr = document.createElement('tr');
 
-            const item = document.createElement('td'); 
+            const item = document.createElement('td');
             item.innerText = row.children[1].innerText;
             tr.appendChild(item);
 
@@ -299,11 +306,11 @@ function PaidCart(){
 
 }
 
-function PaidFactura(){
+function PaidFactura() {
     cartCant.innerText = 0;
     modalBodyDetail.innerHTML = listaCarrito.innerHTML = '';
     modalTotal.innerText = totalCart.innerText = '0.00';
     msjEmptyCart.classList.remove('hide');
-    
+
 }
 
