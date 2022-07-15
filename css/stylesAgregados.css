@@ -189,7 +189,7 @@ b, strong {
 
 
 #template-footer{
-    margin: 2vw 8vw;
+    margin: 2vw 2vw;
 }
 
 .empty-cart{
@@ -284,3 +284,44 @@ p {
     font-size: 15px;
     line-height: 24px;
 }
+
+
+
+/* Cambios por Samuel apartir de aqui */
+
+
+.cart-shop{
+    background-color: #ffffff;
+    filter: blur(10px);
+    top: 0px;
+    right: 0px;
+    width: 150px;
+    height: 100%;
+    filter: drop-shadow(16px 16px 16px rgb(28, 74, 33));
+    
+    position: fixed;
+    z-index: 1;
+
+}
+
+.table-scroll{
+    height: 60vh;
+    overflow-y: scroll;
+    display: none;
+
+}
+
+.C-Cart{
+    padding: 0 0 0 580px;
+    display: block;
+    justify-content: center;
+    display: none;
+}
+
+.O-Cart{
+    padding: 0 0 0 40vw;
+    display: block;
+    justify-content: center;
+}
+
+

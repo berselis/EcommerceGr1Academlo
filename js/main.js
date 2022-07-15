@@ -314,3 +314,42 @@ function PaidFactura() {
 
 }
 
+
+
+// CAMBIOS POR SAMUEL APARTIR DE AQUI SOLO SHOPPING CART
+
+document.getElementById("demo").addEventListener("click", ShowMyShoppingCart);
+
+function ShowMyShoppingCart(){
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+
+    var y = document.getElementById("CLOSE_CART");
+    if (y.style.display === "none") {
+      y.style.display = "block";
+    } else {
+      y.style.display = "none";
+    }
+
+    var z = document.getElementById("open_CART");
+    if (y.style.display === "none") {
+      z.style.display = "block";
+    } else {
+      z.style.display = "none";
+    }
+
+    /* ESTA ES LA PARTE DE LA FUNCION QUE DESPLIEGA EL CARRITO DE COMPRAS */
+    var c = document.getElementById("cart-shop");
+    
+        if (c.style.width === "150px") {
+            c.style.width = "750px";
+            } else {
+            c.style.width = "150px";
+            }
+    
+
+}

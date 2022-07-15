@@ -52,13 +52,13 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex">
+               <!--  <form class="d-flex">
                     <a href="#template-footer" class="btn btn-outline-dark">
                         <i class="bi-cart-fill me-1"></i>
                         Carrito
                         <span id="CartCant" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                     </a>
-                </form>
+                </form> -->
             </div>
         </div>
     </nav>
@@ -133,43 +133,62 @@
         </div>
     </section>
 
-    <div>
+    <!--- Seccion (div linea 136 - 183) con cambios por Samuel, basicamente nuevos id y clases-->
 
-        <div class="my-4 mx-4">
-            <div scope="row">
-                <i class="bi-cart-fill me-1"></i><strong style="font-size: 1.3rem">Productos:</strong>
+    <div id="cart-shop" class="cart-shop">
+        <!-- Añadi id "cart-shop" , clase cart-shop-->
+        <div>
+    
+            <div class="my-4 mx-4">
+
+                <!---Añadi el form aqui y lo comente en la parte de la navegacion-->
+                <form id="demo" class="d-flex cart-deployed">
+                    <!-- Añadi id "demo" , clase cart deployed-->
+                    <a href="#template-footer" class="btn btn-outline-dark">
+                        <i class="bi-cart-fill me-1"></i>
+                        Products
+                        <span id="CartCant" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                    </a>
+                    <!-- Añadi estos dos span a continuacion, close-cart and open-cart-->
+                    <span id="CLOSE_CART" class="C-Cart">╳</span>
+                    <span id="open_CART" class="O-Cart">︽</span>
+                </form>
+    
+            <!-- Añadi clase "table-scroll"-->
+                <div id="myDIV" class="table-scroll">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Item</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Action</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">SubTotal</th>
+                            </tr>
+                        </thead>
+                        <tbody id="items">
+    
+                        </tbody>
+                        <tfoot id="footer-carrito">
+                            <tr>
+                                <td colspan="6">
+                                    <h3 class="empty-cart">Empty Cart!!!</h3>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Item</th>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Accion</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">SubTotal</th>
-                    </tr>
-                </thead>
-                <tbody id="items">
-
-                </tbody>
-                <tfoot id="footer-carrito">
-                    <tr>
-                        <td colspan="6">
-                            <h3 class="empty-cart">Carro Vacio!!!</h3>
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
         </div>
-    </div>
-
-
-    <div id="template-footer">
-        <h3><strong>Total $</strong> <span id="TotalCart">0.00</span></h3>
-        <button class="btn btn-danger btn-sm" id="vaciar-carrito">Vaciar Todo</button>
-        <button class="btn btn-warning btn-sm" id="BtnPaid"><strong>PAGAR</strong></button>
-
+    
+    
+        <div id="template-footer">
+            <h3><strong>Total $</strong> <span id="TotalCart">0.00</span></h3>
+            <button class="btn btn-danger btn-sm" id="vaciar-carrito">vaciar todo</button>
+            <button class="btn btn-warning btn-sm" id="BtnPaid"><strong>PAGAR</strong></button>
+    
+        </div>
     </div>
 
 
@@ -214,8 +233,8 @@
 
     <!-- Footer-->
     <footer>
-        <div class="footer">
-           <div class="container">
+        <div  class="footer">
+           <div  class="container">
               <div class="row">
                  <div class="col-md-6">
                     <div class="cont">
